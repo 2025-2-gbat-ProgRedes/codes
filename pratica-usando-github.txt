@@ -26,4 +26,23 @@
 	
 	GET /repos/{owner}/{repo}/zipball/{ref}
 
+4) Enviar um arquivo, codificado em Base64
+	
+	PUT /repos/{owner}/{repo}/contents/{path}
 
+   Os dados a enviar são um json com o seguinte
+   conteúdo:
+	{
+        "message": "Uma mensagem de commit",
+        "content": "O conteúdo do arquivo em base64",
+        "branch": "O nome do branch onde fazer o commit",
+		"sha": "o hash do arquivo (se já existente)"
+    }
+	
+	O hash do arquivo pode ser obtido usando o comando 1,
+	acessando o campo "sha".
+	
+	
+   Se o arquivo já existe, é necessário obter 
+   o hash do arquivo atual e enviar no campo
+   
