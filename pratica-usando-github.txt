@@ -1,7 +1,20 @@
 1) Obtenha um token do github, diretamente
-   no github.com. Pode ser um Personal Access Token
-
-	Nos comandos seguintes use os headers:
+   no github.com. 
+   
+   Acesse Settings na tela do usuário e na
+   esquerda selecione:
+		1) Developer Settings
+			Personal Access Tokens
+				Fine Grained Tokens
+				
+		2) Quando gerando o token, selecione o(s)
+		   repositório(s) que ele pode acessar
+		   
+		3) Dê a permissão "contents" read+write
+		   no(s) repositório(s) selecionado(s).
+		   
+   
+   Nos comandos seguintes use os headers:
 		Authorization: Bearer YOUR-TOKEN
 		X-GitHub-Api-Version: 2022-11-28
 	
@@ -13,7 +26,4 @@
 	
 	GET /repos/{owner}/{repo}/zipball/{ref}
 
-4) Enviar um arquivo, codificado em Base64
-	
-	PUT /repos/{owner}/{repo}/contents/{path}
 
