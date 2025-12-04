@@ -1,0 +1,54 @@
+1) Obtenha um token do github, diretamente
+   no github.com. 
+   
+   Acesse "Settings" na tela do usuário e na
+   esquerda selecione:
+		1) Developer Settings
+			Personal Access Tokens
+				Fine Grained Tokens
+				
+		2) Quando gerando o token, selecione o(s)
+		   repositório(s) que ele pode acessar
+		   
+		3) Dê a permissão "contents" read+write
+		   no(s) repositório(s) selecionado(s).
+		   
+   Nos comandos seguintes use:
+      a URL
+		/
+      e os headers:
+		Authorization: Bearer YOUR-TOKEN
+		X-GitHub-Api-Version: 2022-11-28
+	
+
+2) Obtenha o conteúdo de um arquivo
+
+	GET /repos/{owner}/{repo}/contents/{path}
+
+     Exemplo de uso com requests:
+       requests.get("https://api.github.com/repos/gbat/pr2025/contents/README.md")
+	
+3) Obtenha um repositório inteiro 
+	
+	GET /repos/{owner}/{repo}/zipball/{ref}
+
+4) Enviar um arquivo, codificado em Base64
+	
+	PUT /repos/{owner}/{repo}/contents/{path}
+
+   Os dados a enviar são um json com o seguinte
+   conteúdo:
+	{
+        "message": "Uma mensagem de commit",
+        "content": "O conteúdo do arquivo em base64",
+        "branch": "O nome do branch onde fazer o commit",
+		"sha": "o hash do arquivo (se já existente)"
+    }
+	
+	O hash do arquivo pode ser obtido usando o comando 1,
+	acessando o campo "sha".
+	
+	
+   Se o arquivo já existe, é necessário obter 
+   o hash do arquivo atual e enviar no campo
+   
